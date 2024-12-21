@@ -1,0 +1,39 @@
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: node-app
+    ports:
+      - "4001:4001" # Atualize a porta para 4001
+    networks:
+      - monitoring
+
+  prometheus:
+    image: prom/prometheus
+    container_name: custom_prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3001:3000" # Porta padrão do Grafana
+    networks:
+      - monitoring
+
+  blackbox_exporter:
+    image: prom/blackbox-exporter
+    container_name: blackbox_exporter
+    ports:
+      - "9115:9115"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
