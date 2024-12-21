@@ -2,11 +2,6 @@
 
 This project sets up a monitoring stack using Prometheus, Grafana, and a Node.js application. The Node.js application exposes custom metrics, including response time and HTTP status of a specific website, as well as the number of active users.
 
-## Table of Contents
-
-- [Project Description](#project-description)
-- [Setup Instructions](#setup-instructions)
-
 ## Project Description
 
 This project demonstrates how to set up a monitoring stack using Prometheus and Grafana. It includes:
